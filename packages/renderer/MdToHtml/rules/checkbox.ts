@@ -57,7 +57,7 @@ function pluginAssets(theme: any) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Old code before rule was applied
-function createPrefixTokens(Token: any, id: string, checked: boolean, label: string, postMessageSyntax: string, sourceToken: any, disabled: boolean): any[] {
+function createPrefixTokens(Token: any, id: string, checked: boolean, label: string, postMessageSyntax: string, sourceToken: any, disabled?: boolean): any[] {
 	let token = null;
 	const tokens = [];
 
@@ -177,7 +177,7 @@ function checkboxPlugin(markdownIt: any, options: RuleOptions) {
 					// Prepend the text content with the checkbox markup and the opening <label> tag
 					// then append the </label> tag at the end of the text content.
 
-					const prefix = createPrefixTokens(Token, id, checked, label, options.postMessageSyntax, token, !!options.checkboxDisabled);
+					const prefix = createPrefixTokens(Token, id, checked, label, options.postMessageSyntax, token, options.checkboxDisabled);
 					const suffix = createSuffixTokens(Token);
 
 					token.children = markdownIt.utils.arrayReplaceAt(token.children, 0, prefix);
