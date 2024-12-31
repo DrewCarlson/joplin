@@ -58,8 +58,13 @@ RUN BUILD_SEQUENCIAL=1 yarn install --inline-builds \
 
 FROM node:18-bullseye-slim
 
+ARG PUID=1000
+ARG PGID=1000
 ARG user=joplin
-RUN useradd --create-home --shell /bin/bash $user
+RUN groupmod -g 1001 node \
+    && usermod -u 1001 -g 1001 node \
+    && addgroup --gid "$PGID" "$user" \
+    && adduser  --gecos '' --uid "$PUID" --gid "$PGID" --disabled-password --shell /bin/bash "$user"
 
 USER $user
 
