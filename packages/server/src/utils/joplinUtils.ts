@@ -220,7 +220,7 @@ async function renderNote(share: Share, note: NoteEntity, resourceInfos: Resourc
 		audioPlayerEnabled: false,
 		videoPlayerEnabled: false,
 		pdfViewerEnabled: false,
-		checkboxDisabled: true,
+		checkboxDisabled: false,
 
 		linkRenderingType: 2,
 	};
