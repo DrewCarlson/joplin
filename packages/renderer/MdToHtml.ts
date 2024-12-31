@@ -628,7 +628,12 @@ export default class MdToHtml implements MarkupRenderer {
 			});
 		}
 
-		loadPlugin(markdownItAnchor, { slugify: slugify });
+		loadPlugin(markdownItAnchor, { 
+			slugify: slugify,
+            permalink: true,
+			permalinkBefore: true,
+			permalinkSymbol: '§'
+		});
 
 		for (const key in plugins) {
 			if (this.pluginEnabled(key)) {
